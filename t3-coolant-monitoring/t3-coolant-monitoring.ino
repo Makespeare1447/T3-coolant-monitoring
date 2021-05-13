@@ -18,19 +18,21 @@
 // beelogger.de - Arduino Datenlogger für Imker
 // Erläuterungen dieses Programmcodes unter https://beelogger.de
 
-
-#define ONE_WIRE_BUS 2
-#define Anzahl_Sensoren_DS18B20 2 // Anzahl der angeschlossenen Sensoren - Mögliche Werte: '0','1','2',... 
-
 #include <Time.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <TFT.h>
 #include <SPI.h>
 
+#define ONE_WIRE_BUS 2
+#define Anzahl_Sensoren_DS18B20 2 // Anzahl der angeschlossenen Sensoren - Mögliche Werte: '0','1','2',... 
+
+
+
 #define cs 10
 #define dc 9
 #define rst 8
+
 #define DS18B20_Aufloesung 12
 DeviceAddress DS18B20_Adressen;
 
@@ -124,7 +126,7 @@ void loop(void) {
     TFTscreen.text(temp2_printout, 70, 20);
     
    
-    TFTscreen.text("\x93", 0, 90);
+    //TFTscreen.text("\x93", 0, 90);
   }
 
 
