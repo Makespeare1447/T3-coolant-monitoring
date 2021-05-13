@@ -35,8 +35,10 @@ unsigned int seconds = 0;
 unsigned int minutes = 0;
 unsigned int hours = 0;
 
-unsigned int temp_color_1;
-unsigned int temp_color_2;
+unsigned int temp_color_red_1;
+unsigned int temp_color_red_2;
+unsigned int temp_color_green_1;
+unsigned int temp_color_green_2;
 
 String temp1_string_old;
 String temp2_string_old;
@@ -74,7 +76,7 @@ void setup(void) {
 
 
 void loop(void) {
-  runtime = millis()*1000;
+  runtime = millis() * 1000;
   hours = runtime;
 
 
@@ -89,7 +91,7 @@ void loop(void) {
           Serial.println("Fehler");
         }
         else {
-           
+
           Serial.print(temperature[i]);
           Serial.println(" 'C");
         }
@@ -98,9 +100,27 @@ void loop(void) {
   }
   Serial.println();
 
-  temp_color_1 = map(temperature[0],0,100,255,55);
-  temp_color_2 = map(temperature[1],0,100,255,55);
-  
+  temp_color_red_1 = map(temperature[0], 22, 35, 0, 255);
+  temp_color_red_2 = map(temperature[1], 22, 35, 0, 255);
+
+  temp_color_green_1 = map(temperature[0], 22, 35, 255, 0);
+  temp_color_green_2 = map(temperature[1], 22, 35, 255, 0);
+
+  Serial.print("red_1: ");
+  Serial.print(temp_color_red_1);
+  Serial.print("\n");
+  Serial.print("green_1: ");
+  Serial.print(temp_color_green_1);
+  Serial.print("\n");
+  Serial.print("red_2: ");
+  Serial.print(temp_color_red_2);
+  Serial.print("\n");
+  Serial.print("green_2: ");
+  Serial.print(temp_color_green_2);
+  Serial.print("\n");
+
+
+
   temp1_string = String(temperature[0]);
   temp1_string.toCharArray(temp1_printout, 6);
   temp2_string = String(temperature[1]);
@@ -110,15 +130,15 @@ void loop(void) {
   if (temp1_string != temp1_string_old || temp2_string != temp2_string_old) {
     TFTscreen.background(0, 0, 0);
     TFTscreen.stroke(255, 255, 255);
-  
+
     TFTscreen.text("Front: ", 0, 0);
     TFTscreen.text("Heck: ", 0, 20);
-    TFTscreen.stroke(temp_color_1, temp_color_1, 255);
+    TFTscreen.stroke(temp_color_red_1, temp_color_green_1, 0);
     TFTscreen.text(temp1_printout, 70, 0);
-    TFTscreen.stroke(temp_color_2, temp_color_2, 255);
+    TFTscreen.stroke(temp_color_red_2, temp_color_green_2, 0);
     TFTscreen.text(temp2_printout, 70, 20);
-    
-   
+
+
     //TFTscreen.text("\x93", 0, 90);
   }
 
