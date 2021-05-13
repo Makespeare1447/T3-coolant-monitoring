@@ -42,7 +42,11 @@ const float No_Val = 999.99;
 float temperature[Anzahl_Sensoren_DS18B20];
 char temp1_printout[6];
 char temp2_printout[6];
+String temp1_string;
+String temp2_string;
 
+String temp1_string_old;
+String temp2_string_old;
 
 
 void setup(void) {
@@ -77,7 +81,6 @@ void setup(void) {
 
 
 void loop(void) {
-  TFTscreen.background(0, 0, 0);
 
 
 
@@ -99,13 +102,24 @@ void loop(void) {
     }
   }
   Serial.println();
-  
-  String temp1_string = String(temperature[0]);
+
+  temp1_string = String(temperature[0]);
   temp1_string.toCharArray(temp1_printout, 6);
-  String temp2_string = String(temperature[1]);
+  temp2_string = String(temperature[1]);
   temp2_string.toCharArray(temp2_printout, 6);
 
-  TFTscreen.text(temp1_printout, 0, 0);
-  TFTscreen.text(temp2_printout, 0, 20);
+
+  if (temp1_string != temp1_string_old || temp2_string != temp2_string_old) {
+    TFTscreen.background(0, 0, 0);
+    TFTscreen.text("Front: ", 0, 0);
+    TFTscreen.text("Heck: ", 0, 20);
+    TFTscreen.text(temp1_printout, 70, 0);
+    TFTscreen.text(temp2_printout, 70, 20);
+  }
+
+
+  temp1_string_old = temp1_string;
+  temp2_string_old = temp2_string;
+
   delay(1000);
 }
