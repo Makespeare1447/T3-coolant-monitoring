@@ -22,6 +22,7 @@
 #define ONE_WIRE_BUS 2
 #define Anzahl_Sensoren_DS18B20 2 // Anzahl der angeschlossenen Sensoren - Mögliche Werte: '0','1','2',... 
 
+#include <Time.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <TFT.h>
@@ -38,12 +39,17 @@ DallasTemperature myDS18B20(&oneWire);
 TFT TFTscreen = TFT(cs, dc, rst);
 
 
+
 const float No_Val = 999.99;
 float temperature[Anzahl_Sensoren_DS18B20];
 char temp1_printout[6];
 char temp2_printout[6];
 String temp1_string;
 String temp2_string;
+unsigned int runtime = 0;
+unsigned int seconds = 0;
+unsigned int minutes = 0;
+unsigned int hours = 0;
 
 String temp1_string_old;
 String temp2_string_old;
@@ -81,7 +87,8 @@ void setup(void) {
 
 
 void loop(void) {
-
+  runtime = millis()*1000;
+  hours = runtime;
 
 
   if ((Anzahl_Sensoren_DS18B20 > 0)) {
@@ -115,6 +122,9 @@ void loop(void) {
     TFTscreen.text("Heck: ", 0, 20);
     TFTscreen.text(temp1_printout, 70, 0);
     TFTscreen.text(temp2_printout, 70, 20);
+    
+   
+    TFTscreen.text("\x93", 0, 90);
   }
 
 
