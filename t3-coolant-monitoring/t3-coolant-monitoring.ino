@@ -133,9 +133,9 @@ void loop(void) {
 
     TFTscreen.text("Front: ", 0, 0);
     TFTscreen.text("Heck: ", 0, 20);
-    TFTscreen.stroke(temp_color_red_1, temp_color_green_1, 0);
+    TFTscreen.stroke(temp_color_red_1, temp_color_green_1, 10);
     TFTscreen.text(temp1_printout, 70, 0);
-    TFTscreen.stroke(temp_color_red_2, temp_color_green_2, 0);
+    TFTscreen.stroke(temp_color_red_2, temp_color_green_2, 10);
     TFTscreen.text(temp2_printout, 70, 20);
 
 
