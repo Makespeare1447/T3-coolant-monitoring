@@ -121,10 +121,10 @@ void loop(void) {
   }
   Serial.println();
 
-  temp_color_red_1 = map(temperature[0], 22, 35, 0, 255);
-  temp_color_red_2 = map(temperature[1], 22, 35, 0, 255);
-  temp_color_green_1 = map(temperature[0], 22, 35, 255, 0);
-  temp_color_green_2 = map(temperature[1], 22, 35, 255, 0);
+  temp_color_red_1 = map(temperature[0], -10, 120, 0, 255);
+  temp_color_red_2 = map(temperature[1], -10, 120, 0, 255);
+  temp_color_green_1 = map(temperature[0], -10, 120, 255, 0);
+  temp_color_green_2 = map(temperature[1], -10, 120, 255, 0);
 
 /*
   Serial.print("red_1: ");
