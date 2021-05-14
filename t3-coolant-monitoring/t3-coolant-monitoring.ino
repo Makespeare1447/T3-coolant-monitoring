@@ -56,8 +56,8 @@ void alarm_beep(){
 
 
 void flash_screen(){
-  TFTscreen.background(255, 0, 0);
-  delay(20);
+  TFTscreen.background(0, 0, 255);
+  delay(5);
   TFTscreen.background(0, 0, 0);
   }
 //SETUP---------------------------------------------------------------------------------------------
@@ -158,9 +158,9 @@ void loop(void) {
 
     TFTscreen.text("Front: ", 0, 0);
     TFTscreen.text("Heck: ", 0, 20);
-    TFTscreen.stroke(temp_color_red_1, temp_color_green_1, 10);
+    TFTscreen.stroke(0, temp_color_green_1, temp_color_red_1);
     TFTscreen.text(temp1_printout, 70, 0);
-    TFTscreen.stroke(temp_color_red_2, temp_color_green_2, 10);
+    TFTscreen.stroke(0, temp_color_green_2, temp_color_red_2);
     TFTscreen.text(temp2_printout, 70, 20);
 
 
