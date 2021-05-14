@@ -98,7 +98,7 @@ void setup(void) {
 
 void loop(void) {
   runtime = millis() * 1000;
-  hours = runtime;
+  //minutes = runtime/60;
 
 
   if ((Anzahl_Sensoren_DS18B20 > 0)) {
@@ -141,9 +141,9 @@ void loop(void) {
   Serial.print("\n");
 */
 
-  if (((abs(temperature[0]-temperature[1])) > 2) && (num_cycles % 5) ==0){
-    flash_screen();
-    alarm_beep();
+  if (((abs(temperature[0]-temperature[1])) > 2) && (num_cycles % 5) == 0){
+    //flash_screen();
+    //alarm_beep();
     } 
   
   temp1_string = String(temperature[0]);
