@@ -40,6 +40,8 @@ unsigned int temp_color_red_1;
 unsigned int temp_color_red_2;
 unsigned int temp_color_green_1;
 unsigned int temp_color_green_2;
+unsigned int temp_color_blue_1;
+unsigned int temp_color_blue_2;
 
 String temp1_string_old;
 String temp2_string_old;
@@ -125,6 +127,8 @@ void loop(void) {
   temp_color_red_2 = map(temperature[1], -10, 120, 0, 255);
   temp_color_green_1 = map(temperature[0], -10, 120, 255, 0);
   temp_color_green_2 = map(temperature[1], -10, 120, 255, 0);
+  temp_color_blue_1 = map(temperature[0], -10, 120, 125, 0);
+  temp_color_blue_2 = map(temperature[1], -10, 120, 125, 0);
 
 /*
   Serial.print("red_1: ");
@@ -158,9 +162,9 @@ void loop(void) {
 
     TFTscreen.text("Front: ", 0, 0);
     TFTscreen.text("Heck: ", 0, 20);
-    TFTscreen.stroke(0, temp_color_green_1, temp_color_red_1);
+    TFTscreen.stroke(temp_color_blue_1, temp_color_green_1, temp_color_red_1);
     TFTscreen.text(temp1_printout, 70, 0);
-    TFTscreen.stroke(0, temp_color_green_2, temp_color_red_2);
+    TFTscreen.stroke(temp_color_blue_2, temp_color_green_2, temp_color_red_2);
     TFTscreen.text(temp2_printout, 70, 20);
 
 
